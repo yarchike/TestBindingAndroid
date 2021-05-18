@@ -1,0 +1,2 @@
+rootProject.name = "TestBindingAndroid"
+include ':app'
