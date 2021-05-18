@@ -1,9 +1,11 @@
 package com.martynov.testbindingandroid
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.martynov.testbindingandroid.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -12,13 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonOne.setOnClickListener {
-            Toast.makeText(this, "in xml: button_one", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.buttonTwo.setOnClickListener {
-            Toast.makeText(this, "in xml: buttonTwo", Toast.LENGTH_SHORT).show()
-        }
-
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment: FirstFragment = FirstFragment()
+        ft.add(R.id.containerFragment, fragment)
+        ft.commit()
     }
 }
